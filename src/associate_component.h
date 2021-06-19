@@ -18,9 +18,19 @@ class Engine;
 class Schema;
 class Config;
 class Memory;
+void test() {}
+class AssociateMemory : public Memory {
+ public:
+  AssociateMemory(const Ticket& ticket):Memory(ticket) {
+    std::function<bool (AssociateMemory::*)(const CommitEntry&)> f =
+        std::mem_fn(&AssociateMemory::Memorize);
+  }
+  virtual bool Memorize(const CommitEntry&); 
+protected:
 
+};
 class AssociateTranslator : 
-  public Translator {
+  public Translator{
 public:
   explicit AssociateTranslator(const Ticket& ticket) : Translator(ticket) {
    
@@ -36,8 +46,7 @@ public:
           config->GetString(this->name_space_ + "/dictionary", &this->dictionary_name);
           config->GetInt(this->name_space_ + "/result_limit", &this->result_limit);
           LOG(INFO) << "Loading associate Dictionary:[" << this->dictionary_name << "] with result limit:" << this->result_limit;
-          this->memory_ = New<Memory>(Ticket(this->engine_,this->dictionary_name,"")); 
-          printf("testing %s %s", this->name_space_.c_str(), dictionary_name.c_str());
+          //this->memory_ = New<Memory>(Ticket(this->engine_,this->dictionary_name,"")); 
         }
         else {
           LOG(ERROR) << "Config doesn't exist";

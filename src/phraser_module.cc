@@ -15,9 +15,11 @@ static void rime_grammar_initialize() {
   LOG(INFO) << "registering components from module 'grammar'.";
   Registry& r = Registry::instance();
   r.Register("grammar", new Component<Phraser>);
-  r.Register("associate_processor", new Component<AssociateProcessor>);
-  r.Register("associate_translator", new Component<AssociateTranslator>);
-  r.Register("associate_segmentor", new Component<AssociateSegmentor>);
+	
+  an<AssociateGlobal> associateGlobal = New<AssociateGlobal>();
+  r.Register("associate_processor", new AssociateComponent<AssociateProcessor>(associateGlobal));
+  r.Register("associate_translator", new AssociateComponent<AssociateTranslator>(associateGlobal));
+  r.Register("associate_segmentor", new AssociateComponent<AssociateSegmentor>(associateGlobal));
 }
 
 static void rime_grammar_finalize() {}

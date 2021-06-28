@@ -15,8 +15,7 @@ bool AssociateSegmentor::Proceed(Segmentation* segmentation){
 
 an<Candidate> AssociateTranslation::Peek() { return New<SimpleCandidate>(); }
 
-bool rime::AssociateMemory::Memorize(const CommitEntry&) { 
-  if (this->callbackFunc != nullptr) {
-  }
+bool rime::AssociateMemory::Memorize(const CommitEntry& entry) { 
+  this->callback_(entry);
   return true; 
 }

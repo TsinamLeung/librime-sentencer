@@ -3,16 +3,8 @@
 
 schema:
   schema_id: vocab
-  name: Vocabulary
+  name: vocabulary
   version: "0.1"
-
-
-engine:
-  processors:
-  segmentors:
-  translators:
-    - script_translator
-  filters:
 
 translator:
   dictionary: vocab

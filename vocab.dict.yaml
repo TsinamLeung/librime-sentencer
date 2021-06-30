@@ -3,6 +3,11 @@ name: vocab
 version: "0.1"
 sort: by_weight
 use_preset_vocabulary: true
+max_phrase_length: 7
+encoder:
+  rules:
+    - length_in_range: [1,7]
+      formula: "AaAyAzBaByBzCaCyCzDaDyDzXaXyXzYaYyYzZaZyZz"
 ...
 
 一	一
@@ -20997,3 +21002,4 @@ use_preset_vocabulary: true
 鿽	鿽
 鿾	鿾
 鿿	鿿
+我們

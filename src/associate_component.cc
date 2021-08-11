@@ -5,7 +5,7 @@ an<Translation> AssociateTranslator::Query(const string& input, const Segment& s
 		// action could be done in Translation
 		return New<AssociateTranslation>(*this->env, this->result_limit);
 	}
-	return New<AssociateTranslation>();
+	return nullptr;
 }
 void AssociateTranslator::Record(Context* ctx) {
 	if (!ctx) return;
